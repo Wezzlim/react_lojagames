@@ -1,11 +1,12 @@
 ﻿import { useEffect, useState } from 'react'
 import { PacmanLoader } from 'react-spinners'
+
+import { listar } from '../../../services/Service'
 import type Produto from '../../../models/Produto'
 import CardProduto from '../cardproduto/CardProduto'
-import { listar } from '../../../services/Service'
 
 
-function ListarProdutos() {
+function ListarProdutosHome() {
 	const [produtos, setProdutos] = useState<Produto[]>([])
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -34,10 +35,10 @@ function ListarProdutos() {
 					size={80}
 					speedMultiplier={2}
 					aria-label="Pacman-loading"
-					className="mx-auto my-28"
+					className="mx-auto my-8"
 				/>
 			)}
-			<div className="flex justify-center bg-slate-100 pt-4">
+			<div className="flex justify-center w-full">
 				<div className="container flex flex-col mx-4">
 					{!isLoading && produtos.length === 0 && (
 						<span className="my-8 text-3xl text-center">
@@ -45,7 +46,7 @@ function ListarProdutos() {
 						</span>
 					)}
 
-					<div className="grid grid-cols-2 gap-x-2 gap-y-2 my-20 md:my-0 sm:gap-x-6 sm:gap-y-2 lg:gap-x-4 lg:gap-y-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5 pb-4">
+					<div className="grid grid-cols-2 gap-x-2 gap-y-2 my-2 md:my-0 sm:gap-x-6 sm:gap-y-2 lg:gap-x-4 lg:gap-y-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5 pb-4">
 						{produtos.map((produto) => (
 							<CardProduto
 								key={produto.id}
@@ -59,4 +60,4 @@ function ListarProdutos() {
 	)
 }
 
-export default ListarProdutos
+export default ListarProdutosHome
